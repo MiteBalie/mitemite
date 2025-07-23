@@ -1,23 +1,212 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Uskoro stiže novi sajt</title>
-    <style>
-      body { 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        height: 100vh; 
-        font-family: Arial, sans-serif; 
-        background: #f0f0f0; 
-        margin: 0; 
-        color: #333;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wager Leaderboard</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Pozicija slika levo i desno */
+    .side-image {
+      position: fixed;
+      top: 0;
+      height: 100vh; /* cela visina ekrana */
+      width: auto;
+      z-index: 1; /* iza sadržaja */
+    }
+
+    .side-image.left {
+      left: 0;
+    }
+
+    .side-image.right {
+      right: 0;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1e1e1e;
+      z-index: 10;
+      position: relative;
+    }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-left, .logo-right {
+      height: 40px;
+    }
+
+    .home-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .home-link:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      flex-grow: 1;
+      z-index: 5;
+      position: relative;
+    }
+
+    .center-logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .center-logo img {
+      height: 60px;
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 20px;
+      margin: 20px 0;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: white;
+    }
+
+    h1 .highlight {
+      color: #4fc3f7;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+
+    th {
+      background-color: #2a2a2a;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #2e2e2e;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      z-index: 10;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
-    <h1>Stranica je trenutno u izradi. Uskoro stiže novi sajt!</h1>
+
+  <!-- Slike levo i desno -->
+  <img src="left.png" alt="Left Design" class="side-image left">
+  <img src="right.png" alt="Right Design" class="side-image right">
+
+  <!-- Gornja traka -->
+  <div class="top-bar">
+    <div class="left-section">
+      <img src="logo.png" alt="Logo levo" class="logo-left" />
+      <a href="#" class="home-link">Home</a>
+    </div>
+    <img src="mitebalie logo.png" alt="Logo desno" class="logo-right" />
+  </div>
+
+  <!-- Centrirani R logo -->
+  <div class="center-logo">
+    <img src="logo.png" alt="Logo centar" />
+  </div>
+
+  <div class="container">
+    <div class="countdown" id="countdown">
+      Odbrojavanje do 28.07.2025...
+    </div>
+
+    <h1>4000$ CODE: <span class="highlight">mitebalie</span> Wager Leaderboard</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th>Reward</th>
+          <th>Wagered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>User1</td><td>$1,760</td><td>$12,340</td></tr>
+        <tr><td>2</td><td>User2</td><td>$1,500</td><td>$9,870</td></tr>
+        <tr><td>3</td><td>User3</td><td>$1,320</td><td>$8,540</td></tr>
+        <tr><td>4</td><td>User4</td><td>$1,200</td><td>$7,200</td></tr>
+        <tr><td>5</td><td>User5</td><td>$1,100</td><td>$5,430</td></tr>
+        <tr><td>6</td><td>User6</td><td>$987</td><td>$3,980</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    © 2025 mitebalie. All rights reserved.
+  </footer>
+
+  <script>
+    function pokreniCountdown() {
+      const ciljDatum = new Date("2025-07-28T00:00:00").getTime();
+      const countdownElement = document.getElementById("countdown");
+      const interval = setInterval(() => {
+        const sada = new Date().getTime();
+        const razlika = ciljDatum - sada;
+        if (razlika <= 0) {
+          countdownElement.innerHTML = "Takmičenje je završeno!";
+          clearInterval(interval);
+          return;
+        }
+        const dani = Math.floor(razlika / (1000 * 60 * 60 * 24));
+        const sati = Math.floor((razlika % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minuti = Math.floor((razlika % (1000 * 60 * 60)) / (1000 * 60));
+        const sekunde = Math.floor((razlika % (1000 * 60)) / 1000);
+        countdownElement.innerHTML = `Ends In: ${dani}d ${sati}h ${minuti}m ${sekunde}s`;
+      }, 1000);
+    }
+    window.onload = () => { pokreniCountdown(); };
+  </script>
 </body>
 </html>
