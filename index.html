@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wager Leaderboard</title>
+  <link rel="icon" type="image/png" href="favicon.png"> <!-- FAVICON -->
   <style>
     html, body {
       height: 100%;
@@ -16,22 +17,16 @@
       flex-direction: column;
     }
 
-    /* Pozicija slika levo i desno */
     .side-image {
       position: fixed;
       top: 0;
-      height: 100vh; /* cela visina ekrana */
+      height: 100vh;
       width: auto;
-      z-index: 1; /* iza sadržaja */
+      z-index: 1;
     }
 
-    .side-image.left {
-      left: 0;
-    }
-
-    .side-image.right {
-      right: 0;
-    }
+    .side-image.left { left: 0; }
+    .side-image.right { right: 0; }
 
     .top-bar {
       display: flex;
@@ -49,9 +44,7 @@
       gap: 15px;
     }
 
-    .logo-left, .logo-right {
-      height: 40px;
-    }
+    .logo-left, .logo-right { height: 40px; }
 
     .home-link {
       color: white;
@@ -60,9 +53,7 @@
       font-size: 16px;
     }
 
-    .home-link:hover {
-      text-decoration: underline;
-    }
+    .home-link:hover { text-decoration: underline; }
 
     .container {
       width: 100%;
@@ -83,8 +74,27 @@
       margin-top: 40px;
     }
 
-    .center-logo img {
-      height: 60px;
+    .center-logo img { height: 60px; }
+
+    /* DUGME */
+    .signup-btn {
+      display: block;
+      margin: 20px auto;
+      background-color: #4fc3f7;
+      color: #121212;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .signup-btn:hover {
+      background-color: #29b6f6;
+      transform: scale(1.05);
     }
 
     .countdown {
@@ -101,9 +111,7 @@
       color: white;
     }
 
-    h1 .highlight {
-      color: #4fc3f7;
-    }
+    h1 .highlight { color: #4fc3f7; }
 
     table {
       width: 100%;
@@ -116,14 +124,8 @@
       border-bottom: 1px solid #333;
     }
 
-    th {
-      background-color: #2a2a2a;
-      color: white;
-    }
-
-    tr:hover {
-      background-color: #2e2e2e;
-    }
+    th { background-color: #2a2a2a; color: white; }
+    tr:hover { background-color: #2e2e2e; }
 
     footer {
       background-color: #1a1a1a;
@@ -151,10 +153,13 @@
     <img src="mitebalie logo.png" alt="Logo desno" class="logo-right" />
   </div>
 
-  <!-- Centrirani R logo -->
+  <!-- Centrirani logo -->
   <div class="center-logo">
     <img src="logo.png" alt="Logo centar" />
   </div>
+
+  <!-- DUGME ZA SIGN UP -->
+  <a href="https://rainbet.com/?r=mitebalie" target="_blank" class="signup-btn">Sign Up</a>
 
   <div class="container">
     <div class="countdown" id="countdown">
