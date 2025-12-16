@@ -28,15 +28,18 @@
     .side-image.left { left: 0; }
     .side-image.right { right: 0; }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #1e1e1e;
-      z-index: 10;
-      position: relative;
-    }
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(30, 30, 30, 0.7); /* 30% providno */
+  z-index: 10;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+
 
     .left-section {
       display: flex;
@@ -159,14 +162,16 @@
     tr:hover { background-color: #2e2e2e; }
 
     footer {
-      background-color: #1a1a1a;
-      color: #888;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      z-index: 10;
-      position: relative;
-    }
+  background-color: rgba(26, 26, 26, 0.7); /* 30% providno */
+  color: #888;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  z-index: 10;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
 	
 	/* KICK LIVE BOX */
 .kick-widget {
@@ -235,6 +240,16 @@ table tbody tr:first-child {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
+}
+
+/* TIMER IMA NAJVEĆI PRIORITET */
+.countdown-box,
+.time-wrapper,
+.time-segment,
+.time-segment span,
+.time-label {
+  position: relative;
+  z-index: 10;
 }
 
 	
@@ -423,6 +438,12 @@ table tbody tr:first-child {
   
 </body>
 </html>
+ 
+
+  
+</body>
+</html>
+
  
 
   
