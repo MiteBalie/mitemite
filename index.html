@@ -99,32 +99,41 @@
 
     /* NOVI COUNTDOWN */
     .countdown-box {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px auto 30px;
-    }
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 20px auto 30px;
+}
 
-    .time-segment {
-      background-color: #1e1e1e;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      min-width: 70px;
-      box-shadow: 0 0 5px rgba(255,255,255,0.05);
-    }
+.time-wrapper {
+  text-align: center;
+}
 
-    .time-segment span {
-      display: block;
-      font-size: 24px;
-      font-weight: bold;
-      color: #4fc3f7;
-    }
+/* MANJI KVADRATIĆ SA BROJEM */
+.time-segment {
+  background-color: #1e1e1e;
+  padding: 8px 8px;   /* smanjen levo/desno (pre je 14px) */
+  border-radius: 8px;
+  min-width: 55px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.05);
+}
 
-    .time-segment label {
-      font-size: 12px;
-      color: #ccc;
-    }
+/* BROJ */
+.time-segment span {
+  font-size: 22px;  /* ostaje isti ili po želji može biti 24px */
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+/* TEKST ISPOD KVADRATA - sada veći font */
+.time-label {
+  margin-top: 6px;
+  font-size: 13px;  /* povećano sa 11px */
+  color: #ccc;
+  letter-spacing: 0.5px;
+}
+
+
 
     h1 {
       text-align: center;
@@ -158,6 +167,62 @@
       z-index: 10;
       position: relative;
     }
+	
+	/* KICK LIVE BOX */
+.kick-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 180px;
+  background-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.kick-header {
+  background-color: #1e1e1e;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #4fc3f7;
+  text-align: center;
+}
+
+/* Fade in i pomeranje redova */
+@keyframes rowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+table tbody tr {
+  animation: rowFadeIn 0.8s ease forwards;
+  opacity: 0; /* start sa 0, animira se na 1 */
+}
+
+/* Dodaj delay po redovima da ulaze jedan po jedan */
+table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+table tbody tr:nth-child(6) { animation-delay: 0.6s; }
+
+/* Glow efekat za prvo mesto */
+table tbody tr:first-child {
+  box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
+  transition: box-shadow 0.5s ease;
+}
+
+	
   </style>
 </head>
 <body>
@@ -185,23 +250,24 @@
 
   <!-- NOVI COUNTDOWN BOX -->
   <div class="countdown-box">
-    <div class="time-segment">
-      <span id="days">0</span>
-      <label>Days</label>
-    </div>
-    <div class="time-segment">
-      <span id="hours">0</span>
-      <label>Hours</label>
-    </div>
-    <div class="time-segment">
-      <span id="minutes">0</span>
-      <label>Minutes</label>
-    </div>
-    <div class="time-segment">
-      <span id="seconds">0</span>
-      <label>Seconds</label>
-    </div>
+  <div class="time-wrapper">
+    <div class="time-segment"><span id="days">0</span></div>
+    <div class="time-label">Days</div>
   </div>
+  <div class="time-wrapper">
+    <div class="time-segment"><span id="hours">0</span></div>
+    <div class="time-label">Hours</div>
+  </div>
+  <div class="time-wrapper">
+    <div class="time-segment"><span id="minutes">0</span></div>
+    <div class="time-label">Minutes</div>
+  </div>
+  <div class="time-wrapper">
+    <div class="time-segment"><span id="seconds">0</span></div>
+    <div class="time-label">Seconds</div>
+  </div>
+</div>
+
 
   <div class="container">
     <h1>4000$ CODE: <span class="highlight">MITEBALIE</span> Wager Leaderboard</h1>
@@ -209,7 +275,7 @@
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th>Rank</th>
           <th>User</th>
           <th>Reward</th>
           <th>Wagered</th>
@@ -227,10 +293,72 @@
   </div>
 
   <footer>
+  <!-- Tekst odgovornog kockanja -->
+  <div style="margin-top: 15px; font-size: 13px; color: #aaa; line-height:1.4;">
+    Please gamble responsibly. Gambling can be addictive and may result in difficulties.
+    For help and support, visit
+    <a href="https://www.begambleaware.org"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:#4fc3f7; text-decoration:none;">
+      BeGambleAware.org
+    </a>
+  </div>
+
+  <!-- VEĆI RAZMAK između dva teksta -->
+  <div style="margin-top: 15px; margin-bottom: 20px;">
     © 2025 mitebalie. All rights reserved.
-  </footer>
+  </div>
+</footer>
+
+
+
+
+
+
+ <!-- KICK LIVE / OFFLINE WIDGET -->
+<div class="kick-widget" id="kickWidget">
+  <div class="kick-header" id="kickDrag">
+    Kick.com – Live Status
+  </div>
+  <iframe
+    src="https://player.kick.com/mitebalie"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
 
   <script>
+  
+  const widget = document.getElementById("kickWidget");
+  const header = document.getElementById("kickDrag");
+
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  header.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - widget.offsetLeft;
+    offsetY = e.clientY - widget.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    widget.style.left = (e.clientX - offsetX) + "px";
+    widget.style.top = (e.clientY - offsetY) + "px";
+    widget.style.bottom = "auto";
+    widget.style.right = "auto";
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+  
+  
     function pokreniCountdown() {
       const ciljDatum = new Date("2025-12-31T23:59:59").getTime();
       const daysEl = document.getElementById("days");
@@ -264,5 +392,9 @@
     }
     window.onload = () => { pokreniCountdown(); };
   </script>
+  
+ 
+
+  
 </body>
 </html>
