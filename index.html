@@ -44,7 +44,7 @@
       gap: 15px;
     }
 
-    .logo-left, .logo-right { height: 40px; }
+    .logo-left, .logo-right { height: 50px; }
 
     .home-link {
       color: white;
@@ -222,14 +222,29 @@ table tbody tr:first-child {
   transition: box-shadow 0.5s ease;
 }
 
+.floating-img {
+  position: fixed;
+  width: 140px; /* ili po želji */
+  height: auto;
+  z-index: 0; /* da bude iza sadržaja */
+  animation: floatY 4s ease-in-out infinite alternate;
+}
+
+/* keyframes animacija gore-dole */
+@keyframes floatY {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
 	
   </style>
 </head>
 <body>
 
   <!-- Slike levo i desno -->
-  <img src="left.png" alt="Left Design" class="side-image left" loading="lazy">
-  <img src="right.png" alt="Right Design" class="side-image right" loading="lazy">
+  <img src="left1.png" alt="Left Design" class="side-image left" loading="lazy">
+  <img src="right1.png" alt="Right Design" class="side-image right" loading="lazy">
 
   <!-- Gornja traka -->
   <div class="top-bar">
@@ -237,7 +252,7 @@ table tbody tr:first-child {
       <img src="logo.png" alt="Logo levo" class="logo-left" />
       <a href="#" class="home-link">Home</a>
     </div>
-    <img src="mitebalie logo.png" alt="Logo desno" class="logo-right" />
+    <img src="float1.png" alt="Logo desno" class="logo-right" />
   </div>
 
   <!-- Centrirani logo -->
@@ -291,6 +306,18 @@ table tbody tr:first-child {
       </tbody>
     </table>
   </div>
+
+<!-- Floating images -->
+<img src="float1.png" class="floating-img" style="top:10%; left:5%;">
+<img src= class="floating-img" style="top:30%; left:25%;">
+<img src="float1.png" class="floating-img" style="top:50%; left:60%;">
+<img src= class="floating-img" style="top:70%; left:80%;">
+<img src="float1.png" class="floating-img" style="top:74%; left:32%;">
+<img src="float1.png" class="floating-img" style="top:27%; left:29%;">
+<img src="float1.png" class="floating-img" style="top:35%; left:60%;">
+
+
+
 
   <footer>
   <!-- Tekst odgovornog kockanja -->
@@ -393,6 +420,11 @@ table tbody tr:first-child {
     window.onload = () => { pokreniCountdown(); };
   </script>
   
+ 
+
+  
+</body>
+</html>
  
 
   
